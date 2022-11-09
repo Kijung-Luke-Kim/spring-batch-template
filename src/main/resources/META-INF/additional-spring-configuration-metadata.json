@@ -1,0 +1,23 @@
+{
+  "groups": [
+    {
+      "name": "spring.datasource.batch",
+      "type": "org.springframework.boot.autoconfigure.jdbc.DataSourceProperties",
+      "sourceType": "org.springframework.boot.autoconfigure.jdbc.DataSourceProperties"
+    },
+    {
+      "name": "spring.datasource.batch.hikari",
+      "type": "org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari",
+      "sourceType": "org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari",
+      "sourceMethod": "dataSource(org.springframework.boot.autoconfigure.jdbc.DataSourceProperties)"
+    }
+  ],
+  "properties": [
+    {
+      "name": "spring.datasource.batch.hikari",
+      "type": "com.zaxxer.hikari.HikariDataSource",
+      "sourceType": "com.zaxxer.hikari.HikariDataSource",
+      "sourceMethod": "dataSource(org.springframework.boot.autoconfigure.jdbc.DataSourceProperties)"
+    }
+  ]
+}

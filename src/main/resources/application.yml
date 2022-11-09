@@ -1,0 +1,39 @@
+spring:
+  batch:
+    job:
+      names: ${job.name:NONE}
+      enabled: false
+    jdbc:
+      initialize-schema: never
+  datasource:
+    batch:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/batch
+      username: root
+      password: test
+    hikari:
+      pool-name: SpringBatchHikariCP
+      maximum-pool-size: 1
+      connection-timeout: 30000
+      idleTimeout: 600000
+      maxLifetime: 1800000
+  jpa:
+    show-sql: true
+  mvc:
+    log-request-details: true
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.web.servlet.DispatcherServlet: DEBUG
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    com.zaxxer.hikari: TRACE
+server:
+  port: 80
+  error:
+    whitelabel:
+      enabled: false
+    path: /error
+    include-exception: true
+    include-message: always
+    include-stacktrace: never
+    include-binding-errors: never
