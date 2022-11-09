@@ -11,12 +11,23 @@ spring:
       url: jdbc:mysql://localhost:3306/batch
       username: root
       password: test
-    hikari:
-      pool-name: SpringBatchHikariCP
-      maximum-pool-size: 1
-      connection-timeout: 30000
-      idleTimeout: 600000
-      maxLifetime: 1800000
+      hikari:
+        pool-name: BatchHikariCP
+        maximum-pool-size: 2
+        connection-timeout: 30000
+        idleTimeout: 600000
+        maxLifetime: 1800000
+    quartz:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/quartz
+      username: root
+      password: test
+      hikari:
+        pool-name: QuartzHikariCP
+        maximum-pool-size: 2
+        connection-timeout: 30000
+        idleTimeout: 600000
+        maxLifetime: 1800000
   jpa:
     show-sql: true
   mvc:

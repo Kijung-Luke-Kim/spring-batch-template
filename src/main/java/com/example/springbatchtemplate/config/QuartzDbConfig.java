@@ -4,24 +4,21 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
 @Configuration
-public class BatchDbConfig {
-    @Primary
+public class QuartzDbConfig {
     @Bean
-    @ConfigurationProperties(value = "spring.datasource.batch")
-    public DataSourceProperties batchDataSourceProperties() {
+    @ConfigurationProperties(value = "spring.datasource.quartz")
+    public DataSourceProperties quartzDataSourceProperties() {
         return new DataSourceProperties();
     }
 
-    @Primary
     @Bean
-    @ConfigurationProperties(value = "spring.datasource.batch.hikari")
-    public DataSource batchDataSource() {
-        return batchDataSourceProperties()
+    @ConfigurationProperties(value = "spring.datasource.quartz.hikari")
+    public DataSource quartzDataSource() {
+        return quartzDataSourceProperties()
                 .initializeDataSourceBuilder()
                 .build();
     }

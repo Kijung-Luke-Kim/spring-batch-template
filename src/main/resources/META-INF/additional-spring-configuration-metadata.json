@@ -7,16 +7,19 @@
     },
     {
       "name": "spring.datasource.batch.hikari",
-      "type": "org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari",
+      "type": "com.zaxxer.hikari.HikariDataSource",
       "sourceType": "org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari",
       "sourceMethod": "dataSource(org.springframework.boot.autoconfigure.jdbc.DataSourceProperties)"
-    }
-  ],
-  "properties": [
+    },
     {
-      "name": "spring.datasource.batch.hikari",
+      "name": "spring.datasource.quartz",
+      "type": "org.springframework.boot.autoconfigure.jdbc.DataSourceProperties",
+      "sourceType": "org.springframework.boot.autoconfigure.jdbc.DataSourceProperties"
+    },
+    {
+      "name": "spring.datasource.quartz.hikari",
       "type": "com.zaxxer.hikari.HikariDataSource",
-      "sourceType": "com.zaxxer.hikari.HikariDataSource",
+      "sourceType": "org.springframework.boot.autoconfigure.jdbc.DataSourceConfiguration$Hikari",
       "sourceMethod": "dataSource(org.springframework.boot.autoconfigure.jdbc.DataSourceProperties)"
     }
   ]

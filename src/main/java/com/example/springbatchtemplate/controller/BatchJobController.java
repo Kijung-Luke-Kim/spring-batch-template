@@ -1,5 +1,6 @@
 package com.example.springbatchtemplate.controller;
 
+import com.example.springbatchtemplate.parameter.TestChunkJobParameter;
 import com.example.springbatchtemplate.parameter.TestTaskletJobParameter;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,6 +28,7 @@ import java.util.Map;
 public class BatchJobController {
     private final JobLauncher jobLauncher;
     private final Job testTaskletJob;
+    private final Job testChunkJob;
 
     private final ObjectMapper objectMapper;
 
@@ -34,9 +36,19 @@ public class BatchJobController {
     public ResponseEntity<Boolean> postTestJob(
             @RequestBody TestTaskletJobParameter parameter
     ) throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
-        Map<String, JobParameter> jobParameters = objectMapper.convertValue(parameter, new TypeReference<Map<String, JobParameter>>() {
+        Map<String, JobParameter> jobParameters = objectMapper.convertValue(parameter, new TypeReference<>() {
         });
         jobLauncher.run(testTaskletJob, new JobParameters(jobParameters));
+        return new ResponseEntity<>(true, HttpStatus.OK);
+    }
+
+    @PostMapping("/test-chunk-job")
+    public ResponseEntity<Boolean> postChunkJob(
+            @RequestBody TestChunkJobParameter parameter
+    ) throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
+        Map<String, JobParameter> jobParameters = objectMapper.convertValue(parameter, new TypeReference<>() {
+        });
+        jobLauncher.run(testChunkJob, new JobParameters(jobParameters));
         return new ResponseEntity<>(true, HttpStatus.OK);
     }
 }
